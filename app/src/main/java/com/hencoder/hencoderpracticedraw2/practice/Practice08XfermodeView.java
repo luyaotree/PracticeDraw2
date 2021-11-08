@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -42,6 +44,8 @@ public class Practice08XfermodeView extends View {
         // 别忘了用 canvas.saveLayer() 开启 off-screen buffer
 
         canvas.drawBitmap(bitmap1, 0, 0, paint);
+        PorterDuffXfermode porterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC);
+        paint.setXfermode(porterDuffXfermode);
         // 第一个：PorterDuff.Mode.SRC
         canvas.drawBitmap(bitmap2, 0, 0, paint);
 
