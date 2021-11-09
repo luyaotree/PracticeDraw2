@@ -39,15 +39,18 @@ public class Practice11StrokeMiterView extends View {
         canvas.save();
 
         canvas.translate(100, 100);
-        // MITER 值：1
+        // MITER 值：1, 由于画的角度的比值会大于1，所以会自动调整为Paint.Join.BEVEL
+        paint.setStrokeMiter(1);
         canvas.drawPath(path, paint);
 
         canvas.translate(300, 0);
-        // MITER 值：2
+        // MITER 值：2, 由于画的角度的比值会大于2，所以会自动调整为Paint.Join.BEVEL
+        paint.setStrokeMiter(2);
         canvas.drawPath(path, paint);
 
         canvas.translate(300, 0);
-        // MITER 值：5
+        // MITER 值：5, 由于画的角度的比值小于5，所以不会调整为Paint.Join.BEVEL，就会尖尖的
+        paint.setStrokeMiter(5);
         canvas.drawPath(path, paint);
 
         canvas.restore();
